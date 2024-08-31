@@ -1,72 +1,79 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap");
+//app.scss File
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 * {
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
 @import "features";
 @import "header";
 @import "login";
 @import "mediaquery";
-
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
 a {
   text-decoration: none;
-  color: $color3;
+  color: $primary-color;
+  transition: color 0.3s;
+  &:hover {
+    color: darken($primary-color, 15%);
+  }
 }
-
 .home {
   text-align: center;
+  padding: 4rem 2rem;
   .heading {
-    @include styledText(2rem, 100, uppercase);
-    padding-top: 10vmax;
+    @include styledText(2.5rem, 700, capitalize);
+    margin-bottom: 1rem;
   }
-
   p {
-    margin: 2rem 0;
-    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
 }
 .todosContainer {
-  @include flexBox(column, center, flex-start);
-  @include fill;
-  @include container(900px, unset, 3rem 0);
+  @include flexBox(column, flex-start, center, 1.5rem);
+  @include container(800px, unset, 2rem);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: $shadow;
 }
-
 .todo {
-  background-color: $color2;
-  border-radius: 5px;
-
+  background-color: $background-color;
+  border-radius: 6px;
   @include flexBox(row, center, space-between);
   width: 100%;
-  padding: 2rem;
-  > div:last-of-type {
-    @include flexBox(row);
+  padding: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow;
   }
-
-  input {
-    width: 2rem;
-    height: 2rem;
+  > div:last-of-type {
+    @include flexBox(row, center, flex-end, 0.5rem);
+  }
+  input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+    accent-color: $secondary-color;
   }
 }
-
 .loader {
   @include defaultStyle;
   @include flexBox(column, center, center);
-  @include styledText(2rem, 100, uppercase);
-  overflow-x: hidden;
-  width: 100vw;
+  @include styledText(1.5rem, 500, uppercase);
 }
-
 .btn {
-  @include styledText;
+  @include styledText(0.9rem, 600);
   @include myButton;
 }
 .container {
   @include defaultStyle;
-  padding: 5rem 2rem;
-  background-color: $color4;
+  padding: 3rem 2rem;
 }
